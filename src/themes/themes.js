@@ -1,29 +1,59 @@
 export const lightTheme = {
-	body: '#FFF',
-	text: '#000',
-	background: '#EEE',
+	body: 'var(--color-white)',
+	text: 'var(--color-text)',
+	background: 'var(--color-white)',
+
+	logoHeader: 'var(--color-green)',
+	logoHeaderSpan: 'var(--color-black)',
+
+	buttonBackground: 'var(--color-green)',
+	buttonHoverBackground: 'var(--color-green-light)',
 }
 
 export const darkTheme = {
-	body: '#000',
-	text: '#FFF',
-	background: '#333',
+	body: 'var(--color-black)',
+	text: 'var(--color-white)',
+	background: 'var(--color-black)',
+
+	logoHeader: 'var(--color-green)',
+	logoHeaderSpan: 'var(--color-white)',
+
+	buttonBackground: 'var(--color-green)',
+	buttonHoverBackground: 'var(--color-green-light)',
 }
 
 export const blueTheme = {
-	body: '#E0F7FA',
-	text: '#01579B',
-	background: '#0288D1',
+	body: 'var(--color-white)',
+	text: 'var(--color-text)',
+	background: 'var(--color-white)',
+
+	logoHeader: 'var(--color-blue)',
+	logoHeaderSpan: 'var(--color-text)',
+
+	buttonBackground: 'var(--color-blue)',
+	buttonHoverBackground: 'var(--color-blue-light)',
 }
 
 export const greenTheme = {
-	body: '#E8F5E9',
+	body: 'var(--color-white)',
 	text: '#1B5E20',
-	background: '#388E3C',
+	background: 'var(--color-white)',
+
+	logoHeader: 'var(--color-green)',
+	logoHeaderSpan: 'var(--color-text)',
+
+	buttonBackground: 'var(--color-green)',
+	buttonHoverBackground: 'var(--color-green-light)',
 }
 
-export const redTheme = {
-	body: '#FFEBEE',
-	text: '#B71C1C',
-	background: '#D32F2F',
+export const orangeTheme = {
+	body: 'var(--color-white)',
+	text: 'var(--color-white)',
+	background: 'var(--color-white)',
+
+	logoHeader: 'var(--color-orange)',
+	logoHeaderSpan: 'var(--color-text)',
+
+	buttonBackground: 'var(--color-orange)',
+	buttonHoverBackground: 'var(--color-orange-light)',
 }

@@ -1,28 +1,21 @@
 import '../styles/App.css'
 import React, { useState } from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import {
 	lightTheme,
 	darkTheme,
 	blueTheme,
 	greenTheme,
-	redTheme,
+	orangeTheme,
 } from '../themes/themes'
 import { GlobalStyles } from '../themes/globalStyles'
 import AppRoutes from '../routes/AppRoutes'
 import { AuthProvider } from '../context/AuthContext/AuthContext'
-import ThemeToggleButton from './ThemeToggleButton/ThemeToggleButton'
+import Header from '../components/Header/Header'
 
 function App() {
 	const [theme, setTheme] = useState('light')
-
-	const themeToggler = () => {
-		if (theme === 'light') setTheme('dark')
-		else if (theme === 'dark') setTheme('blue')
-		else if (theme === 'blue') setTheme('green')
-		else if (theme === 'green') setTheme('red')
-		else setTheme('light')
-	}
 
 	return (
 		<AuthProvider>
@@ -36,15 +29,17 @@ function App() {
 						? blueTheme
 						: theme === 'green'
 						? greenTheme
-						: redTheme
+						: orangeTheme
 				}
 			>
 				<>
 					<GlobalStyles />
-					<div className='app'>
-						<ThemeToggleButton theme={theme} themeToggler={themeToggler} />{' '}
-						<AppRoutes />
-					</div>
+					<Router>
+						<Header theme={theme} setTheme={setTheme} />
+						<div className='app'>
+							<AppRoutes />
+						</div>
+					</Router>
 				</>
 			</ThemeProvider>
 		</AuthProvider>

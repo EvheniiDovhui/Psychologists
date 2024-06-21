@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAuth } from '../../context/AuthContext/AuthContext' // Правильний імпорт шляху до AuthContext
-import PsychologistCard from '../../components/PsychologistCard/PsychologistCard'
+import PsychologistCard from '../../components/PsychologistList/PsychologistCard/PsychologistCard'
 
 const FavoritesPage = () => {
 	const { currentUser } = useAuth()
@@ -10,7 +10,6 @@ const FavoritesPage = () => {
 			<h2>Сторінка Обраних</h2>
 			{currentUser ? (
 				<div>
-					{/* Тут відображаємо картки обраних психологів */}
 					<PsychologistCard />
 				</div>
 			) : (
