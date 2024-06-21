@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { auth } from '../../services/firebaseConfig'
 import { signOut } from 'firebase/auth'
 import ThemeSelector from '../ThemeSelector/ThemeSelector'
@@ -16,6 +16,7 @@ import {
 
 const Header = ({ theme, setTheme }) => {
 	const navigate = useNavigate()
+	const location = useLocation()
 
 	const handleLogout = async () => {
 		try {
@@ -35,13 +36,28 @@ const Header = ({ theme, setTheme }) => {
 			<Nav>
 				<NavList>
 					<NavItem>
-						<NavLink to='/'>Home</NavLink>
+						<NavLink
+							to='/'
+							className={location.pathname === '/' ? 'active' : ''}
+						>
+							Home
+						</NavLink>
 					</NavItem>
 					<NavItem>
-						<NavLink to='/psychologists'>Psychologists</NavLink>
+						<NavLink
+							to='/psychologists'
+							className={location.pathname === '/psychologists' ? 'active' : ''}
+						>
+							Psychologists
+						</NavLink>
 					</NavItem>
 					<NavItem>
-						<NavLink to='/favorites'>Favorites</NavLink>
+						<NavLink
+							to='/favorites'
+							className={location.pathname === '/favorites' ? 'active' : ''}
+						>
+							Favorites
+						</NavLink>
 					</NavItem>
 				</NavList>
 				<ThemeSelector theme={theme} setTheme={setTheme} />

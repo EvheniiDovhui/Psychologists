@@ -14,30 +14,23 @@
 
 	--color-green: #54be96;
 	--color-green-light: #54be9633;
+	--color-green-hover: #36a379;
 
 	--color-blue: #3470ff;
 	--color-blue-light: #3470ff33;
 
-	--color-orange: #fc832c;
+	--color-transparent: rgba(0, 0, 0, 0);
+
+	--color-orange: #231104;
 	--color-orange-light: #fc832c33;
 
 	--color-text: #191a15;
-	--color-text-secondary: rgba(16, 24, 40, 0.6);
-	--color-text-light: rgb(71, 84, 103);
 
-	--color-icon: rgb(16, 24, 40);
-
-	--color-background-icon: #10182810;
-
-	--color-background-input: #10182810;
-
-	--color-border: rgba(16, 24, 40, 0.125);
-	--color-border-hover: rgb(216, 67, 67);
-
-	--color-button: rgb(228, 72, 72);
-	--color-button-hover: rgb(216, 67, 67);
+	--color-border-header: #191a151a;
+	--color-border-button: #191a1533;
 }
 
 body {
 	font-family: 'Inter-Regular', sans-serif;
+	margin: 0 auto;
 }

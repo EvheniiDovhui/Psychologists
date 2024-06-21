@@ -1,4 +1,10 @@
 import React from 'react'
+import {
+	ThemeSelectorContainer,
+	ThemeLabel,
+	ThemeSelect,
+	ThemeOption,
+} from './ThemeSelectorStyle'
 
 const ThemeSelector = ({ theme, setTheme }) => {
 	const handleThemeChange = event => {
@@ -6,16 +12,16 @@ const ThemeSelector = ({ theme, setTheme }) => {
 	}
 
 	return (
-		<div>
-			<label htmlFor='theme-select'>Theme:</label>
-			<select id='theme-select' value={theme} onChange={handleThemeChange}>
-				<option value='light'>Light</option>
-				<option value='dark'>Dark</option>
-				<option value='blue'>Blue</option>
-				<option value='green'>Green</option>
-				<option value='red'>Orange</option>
-			</select>
-		</div>
+		<ThemeSelectorContainer>
+			<ThemeLabel htmlFor='theme-select'>Theme:</ThemeLabel>
+			<ThemeSelect id='theme-select' value={theme} onChange={handleThemeChange}>
+				<ThemeOption value='light'>Light</ThemeOption>
+				<ThemeOption value='dark'>Dark</ThemeOption>
+				<ThemeOption value='blue'>Blue</ThemeOption>
+				<ThemeOption value='green'>Green</ThemeOption>
+				<ThemeOption value='red'>Orange</ThemeOption>
+			</ThemeSelect>
+		</ThemeSelectorContainer>
 	)
 }
 
