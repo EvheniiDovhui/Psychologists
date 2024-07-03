@@ -10,3 +10,12 @@
 	justify-content: center;
 	z-index: 100;
 }
+.delete-button {
+	background-color: transparent;
+}
+.icon-user-settings {
+	width: 42px;
+	height: 42px;
+	fill: var(--color-white);
+	stroke: var(--color-white);
+}

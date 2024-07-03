@@ -8,7 +8,9 @@ import {
 
 const ThemeSelector = ({ theme, setTheme }) => {
 	const handleThemeChange = event => {
-		setTheme(event.target.value)
+		const newTheme = event.target.value
+		setTheme(newTheme) // Впевніться, що setTheme є правильною функцією
+		localStorage.setItem('userTheme', newTheme) // Опціонально, для збереження теми у localStorage
 	}
 
 	return (
@@ -19,7 +21,7 @@ const ThemeSelector = ({ theme, setTheme }) => {
 				<ThemeOption value='dark'>Dark</ThemeOption>
 				<ThemeOption value='blue'>Blue</ThemeOption>
 				<ThemeOption value='green'>Green</ThemeOption>
-				<ThemeOption value='red'>Orange</ThemeOption>
+				<ThemeOption value='orange'>Orange</ThemeOption>
 			</ThemeSelect>
 		</ThemeSelectorContainer>
 	)
