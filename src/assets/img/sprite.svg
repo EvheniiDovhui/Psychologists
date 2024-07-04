@@ -9,6 +9,9 @@
     <symbol id="iconVector23" viewBox="0 0 48 32">
       <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" d="m4 6 20 20L44 6"/>
     </symbol>
+    <symbol id="iconStarFull" viewBox="0 0 32 32">
+      <path d="m32 12.408-11.056-1.607L16 .783l-4.944 10.018L0 12.408l8 7.798-1.889 11.011L16 26.018l9.889 5.199L24 20.206l8-7.798z"/>
+    </symbol>
     <symbol id="iconClock" viewBox="0 0 32 32">
       <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.4" d="M16 29.333c7.364 0 13.333-5.969 13.333-13.333S23.363 2.667 16 2.667C8.636 2.667 2.667 8.637 2.667 16S8.637 29.333 16 29.333z"/>
       <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.4" d="M16 8v8l5.333 2.667"/>

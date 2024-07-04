@@ -2,6 +2,7 @@ const lightTheme = {
 	body: 'var(--color-white)',
 	text: 'var(--color-text)',
 	background: 'var(--color-white)',
+	psPageBackground: 'var(--color-psychologist-page-background)',
 
 	logoHeader: 'var(--color-green)',
 	logoHeaderSpan: 'var(--color-black)',

@@ -8,6 +8,8 @@ import { getStorage } from 'firebase/storage'
 const firebaseConfig = {
 	apiKey: 'AIzaSyD7XJIrsBwhPeLMBZs3E8E5LjPC23lW4cQ',
 	authDomain: 'psychologist-d260c.firebaseapp.com',
+	databaseURL:
+		'https://psychologist-d260c-default-rtdb.europe-west1.firebasedatabase.app', // Правильний URL для бази даних
 	projectId: 'psychologist-d260c',
 	storageBucket: 'gs://psychologist-d260c.appspot.com',
 	messagingSenderId: '62170215010',

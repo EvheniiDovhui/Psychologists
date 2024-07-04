@@ -7,6 +7,7 @@ import { auth } from '../../services/firebaseConfig'
 import { onAuthStateChanged } from 'firebase/auth'
 import LoginForm from '../../components/ui/ModalForm/LoginForm'
 import RegistrationForm from '../../components/ui/ModalForm/RegistrationForm'
+import PsychologistList from '../../components/PsychologistContent/PsychologistList/PsychologistList'
 
 function PsychologistsPage() {
 	const { theme, setTheme } = useTheme()
@@ -41,6 +42,7 @@ function PsychologistsPage() {
 				openRegistrationModal={openRegistrationModal}
 				user={user}
 			/>
+			<PsychologistList />
 			<Modal isOpen={isLoginModalOpen} onClose={closeLoginModal}>
 				<LoginForm closeModal={closeLoginModal} />
 			</Modal>

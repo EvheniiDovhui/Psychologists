@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAuth } from '../../context/AuthContext/AuthContext' // Правильний імпорт шляху до AuthContext
-import PsychologistCard from '../../components/PsychologistList/PsychologistCard/PsychologistCard'
+import PsychologistCard from '../../components/PsychologistContent/PsychologistCard/PsychologistCard'
 
 const FavoritesPage = () => {
 	const { currentUser } = useAuth()

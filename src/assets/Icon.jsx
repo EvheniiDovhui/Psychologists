@@ -24,6 +24,12 @@ export const IconVector23 = ({ className }) => (
 	</svg>
 )
 
+export const IconStarFull = ({ className }) => (
+	<svg className={`${className}`}>
+		<use href={`${icon}#iconStarFull`}></use>
+	</svg>
+)
+
 export const IconClock = ({ className }) => (
 	<svg className={`${className}`}>
 		<use href={`${icon}#iconClock`}></use>
