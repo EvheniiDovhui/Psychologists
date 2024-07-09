@@ -5,7 +5,6 @@ import HomePage from '../pages/HomePage/HomePage'
 import PsychologistsPage from '../pages/PsychologistsPage/PsychologistsPage'
 import FavoritesPage from '../pages/FavoritesPage/FavoritesPage'
 import NotFound from '../pages/NotFound/NotFound'
-
 import PrivateRoute from './PrivateRoute/PrivateRoute'
 
 const AppRoutes = () => (
