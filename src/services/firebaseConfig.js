@@ -2,14 +2,22 @@ import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
 import { getDatabase } from 'firebase/database'
 import { getAnalytics } from 'firebase/analytics'
-import { getFirestore } from 'firebase/firestore'
+import {
+	getFirestore,
+	doc,
+	setDoc,
+	getDoc,
+	updateDoc,
+	arrayUnion,
+	arrayRemove,
+} from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyD7XJIrsBwhPeLMBZs3E8E5LjPC23lW4cQ',
 	authDomain: 'psychologist-d260c.firebaseapp.com',
 	databaseURL:
-		'https://psychologist-d260c-default-rtdb.europe-west1.firebasedatabase.app', // Правильний URL для бази даних
+		'https://psychologist-d260c-default-rtdb.europe-west1.firebasedatabase.app',
 	projectId: 'psychologist-d260c',
 	storageBucket: 'gs://psychologist-d260c.appspot.com',
 	messagingSenderId: '62170215010',
@@ -21,6 +29,6 @@ const app = initializeApp(firebaseConfig)
 const auth = getAuth(app)
 const database = getDatabase(app)
 const analytics = getAnalytics(app)
-const storage = getStorage(app) // Ініціалізація Firebase Storage
+const storage = getStorage(app)
 export const db = getFirestore(app)
-export { app, auth, database, analytics, storage } // Експортуємо storage
+export { app, auth, database, analytics, storage }

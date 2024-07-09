@@ -1,6 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
+import {
+	createUserWithEmailAndPassword,
+	updateProfile,
+	signInWithPopup,
+	GoogleAuthProvider,
+} from 'firebase/auth'
 import {
 	FormContainer,
 	Form,
@@ -11,12 +16,13 @@ import {
 	FormTitle,
 	ShowPasswordIcon,
 	FormText,
+	GoogleButton,
 } from './FormStyles'
 import { auth } from '../../../services/firebaseConfig'
 import './ModalForm.css'
 import PasswordIcon from '../PasswordIcon'
 
-const RegistrationForm = ({ closeModal, onComplete }) => {
+const RegistrationForm = ({ closeModal }) => {
 	const navigate = useNavigate()
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
@@ -24,6 +30,13 @@ const RegistrationForm = ({ closeModal, onComplete }) => {
 	const [confirmPassword, setConfirmPassword] = useState('')
 	const [error, setError] = useState(null)
 	const [showPassword, setShowPassword] = useState(false)
+
+	useEffect(() => {
+		setName('')
+		setEmail('')
+		setPassword('')
+		setConfirmPassword('')
+	}, [])
 
 	const handleSignUp = async e => {
 		e.preventDefault()
@@ -41,7 +54,21 @@ const RegistrationForm = ({ closeModal, onComplete }) => {
 			await updateProfile(user, {
 				displayName: name,
 			})
-			onComplete()
+			closeModal()
+			navigate('/psychologists')
+		} catch (error) {
+			setError(error.message)
+		}
+	}
+
+	const handleGoogleSignUp = async () => {
+		const provider = new GoogleAuthProvider()
+		try {
+			const result = await signInWithPopup(auth, provider)
+			const user = result.user
+			await updateProfile(user, {
+				displayName: user.displayName,
+			})
 			closeModal()
 			navigate('/psychologists')
 		} catch (error) {
@@ -64,6 +91,7 @@ const RegistrationForm = ({ closeModal, onComplete }) => {
 						placeholder='Name'
 						value={name}
 						onChange={e => setName(e.target.value)}
+						autoComplete='off'
 						required
 					/>
 				</InputContainer>
@@ -73,6 +101,7 @@ const RegistrationForm = ({ closeModal, onComplete }) => {
 						placeholder='Email'
 						value={email}
 						onChange={e => setEmail(e.target.value)}
+						autoComplete='off'
 						required
 					/>
 				</InputContainer>
@@ -82,6 +111,7 @@ const RegistrationForm = ({ closeModal, onComplete }) => {
 						placeholder='Password'
 						value={password}
 						onChange={e => setPassword(e.target.value)}
+						autoComplete='off'
 						required
 					/>
 					<ShowPasswordIcon onClick={() => setShowPassword(!showPassword)}>
@@ -94,6 +124,7 @@ const RegistrationForm = ({ closeModal, onComplete }) => {
 						placeholder='Confirm Password'
 						value={confirmPassword}
 						onChange={e => setConfirmPassword(e.target.value)}
+						autoComplete='off'
 						required
 					/>
 					<ShowPasswordIcon onClick={() => setShowPassword(!showPassword)}>
@@ -101,6 +132,9 @@ const RegistrationForm = ({ closeModal, onComplete }) => {
 					</ShowPasswordIcon>
 				</InputContainer>
 				<Button type='submit'>Register</Button>
+				<GoogleButton type='button' onClick={handleGoogleSignUp}>
+					Register with Google
+				</GoogleButton>
 			</Form>
 			{error && <ErrorMessage>{error}</ErrorMessage>}
 		</FormContainer>

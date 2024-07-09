@@ -44,6 +44,24 @@ export const Button = styled.button`
 	}
 `
 
+export const GoogleButton = styled.button`
+	background-color: #4285f4;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	margin-top: 10px;
+	border-radius: 5px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background-color 0.3s ease;
+
+	&:hover {
+		background-color: #357ae8;
+	}
+`
+
 export const ErrorMessage = styled.p`
 	color: red;
 `
@@ -61,4 +79,13 @@ export const ShowPasswordIcon = styled.span`
 	right: 10px;
 	top: 50%;
 	transform: translateY(-50%);
+`
+export const ResetPasswordLink = styled.a`
+	color: blue;
+	cursor: pointer;
+	text-decoration: underline;
+`
+
+export const SuccessMessage = styled.span`
+	color: green;
 `

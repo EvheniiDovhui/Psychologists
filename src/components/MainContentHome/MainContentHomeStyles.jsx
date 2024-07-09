@@ -2,11 +2,19 @@
 
 import styled from 'styled-components'
 
-export const MainContainer = styled.div`
+export const MainContainer = styled.section`
 	display: flex;
+	max-width: 1200px;
+	margin: 0 auto;
 	justify-content: space-between;
 	align-items: center;
 	padding: 20px;
+`
+
+export const MainTextContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 `
 
 export const MainText = styled.div`

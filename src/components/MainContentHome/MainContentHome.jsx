@@ -9,6 +9,7 @@ import {
 	MainImageContainer,
 	MainImage,
 	MainTitleSpan,
+	MainTextContainer,
 } from './MainContentHomeStyles'
 import image1x from '../../assets/img/image.jpg'
 import image2x from '../../assets/img/image@2x.jpg'
@@ -48,19 +49,32 @@ const MainContentHome = () => {
 
 	return (
 		<MainContainer>
-			<MainText>
-				<MainTitle>
-					The road to the <MainTitleSpan> depths </MainTitleSpan>of the human
-					soul
-				</MainTitle>
-				<MainParagraph>
-					We help you to reveal your potential, overcome challenges and find a
-					guide in your own life with the help of our experienced psychologists.
-				</MainParagraph>
-				<MainLink href='#' onClick={handleGetStarted}>
-					Get started <IconArrow className='icon-arrow' />
-				</MainLink>
-			</MainText>
+			<MainTextContainer>
+				<MainText>
+					<MainTitle>
+						The road to the <MainTitleSpan> depths </MainTitleSpan>of the human
+						soul
+					</MainTitle>
+					<MainParagraph>
+						We help you to reveal your potential, overcome challenges and find a
+						guide in your own life with the help of our experienced
+						psychologists.
+					</MainParagraph>
+					<MainLink href='#' onClick={handleGetStarted}>
+						Get started <IconArrow className='icon-arrow' />
+					</MainLink>
+				</MainText>
+				<MainText>
+					<MainTitle>To become a psychologist</MainTitle>
+					<MainParagraph>
+						If you are a psychologist and want to get to our site, fill out the
+						Google form.
+					</MainParagraph>
+					<MainLink href='https://forms.gle/6UTSXgaL7qvW46i7A' target='_blank'>
+						Google form <IconArrow className='icon-arrow' />
+					</MainLink>
+				</MainText>
+			</MainTextContainer>
 			<MainImageContainer>
 				<MainImage
 					src={image1x}

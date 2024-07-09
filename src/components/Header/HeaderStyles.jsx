@@ -4,6 +4,8 @@ import * as Avatar from '@radix-ui/react-avatar'
 
 const HeaderContainer = styled.header`
 	display: flex;
+	max-width: 1200px;
+	margin: 0 auto;
 	justify-content: space-between;
 	align-items: center;
 	padding: 18px;
