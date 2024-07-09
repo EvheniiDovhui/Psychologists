@@ -22,3 +22,5 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
+I switched from using BrowserRouter to use HashRouter from react-router-dom
