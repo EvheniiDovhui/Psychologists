@@ -11,6 +11,15 @@ const HeaderContainer = styled.header`
 	padding: 18px;
 	background: ${({ theme }) => theme.background};
 	border-bottom: 1px solid ${({ theme }) => theme.borderHeader};
+
+	@media (max-width: 768px) {
+		padding: 10px;
+	}
+
+	@media (max-width: 480px) {
+		justify-content: space-around;
+		padding: 8px;
+	}
 `
 
 const LogoHeader = styled(Link)`
@@ -19,6 +28,10 @@ const LogoHeader = styled(Link)`
 	font-size: 16px;
 	text-align: center;
 	background-color: #28a745;
+
+	@media (max-width: 768px) {
+		margin: 0;
+	}
 `
 
 const Logo = styled.a`
@@ -31,6 +44,10 @@ const Logo = styled.a`
 		transform: scale(1.015);
 		color: ${({ theme }) => theme.logoHeaderHover};
 	}
+
+	@media (max-width: 480px) {
+		font-size: 20px;
+	}
 `
 
 const Span = styled.span`
@@ -38,13 +55,63 @@ const Span = styled.span`
 	color: ${({ theme }) => theme.logoHeaderSpan};
 `
 
+const NavButton = styled.button`
+	display: none;
+	cursor: pointer;
+	@media (max-width: 480px) {
+		display: block;
+		padding: 6px;
+		margin: 8px 0;
+		background-color: transparent;
+		border: none;
+		outline: none;
+		cursor: pointer;
+	}
+`
+const HeaderModalContainer = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 116px;
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	@media (max-width: 480px) {
+		gap: 0;
+
+		visibility: hidden;
+		width: 0;
+		height: 0;
+	}
+`
+
 const Nav = styled.nav`
 	display: flex;
+
+	@media (max-width: 768px) {
+		width: 100%;
+		margin-top: 10px;
+		justify-content: space-between;
+	}
+
+	@media (max-width: 480px) {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 8px;
+	}
 `
 
 const NavList = styled.ul`
 	display: flex;
 	gap: 12px;
+
+	@media (max-width: 480px) {
+		flex-direction: column;
+		gap: 6px;
+	}
 `
 
 const NavItem = styled.li`
@@ -84,6 +151,11 @@ const LogoutButton = styled.button`
 		background-color: ${({ theme }) => theme.buttonBackgroundHover};
 		color: ${({ theme }) => theme.body};
 	}
+
+	@media (max-width: 480px) {
+		padding: 6px 18px;
+		font-size: 14px;
+	}
 `
 
 const RegistrationButton = styled.button`
@@ -98,6 +170,11 @@ const RegistrationButton = styled.button`
 	&:hover {
 		background-color: ${({ theme }) => theme.buttonBackgroundHover};
 	}
+
+	@media (max-width: 480px) {
+		padding: 6px 18px;
+		font-size: 14px;
+	}
 `
 const UserContainer = styled.div`
 	display: flex;
@@ -108,6 +185,10 @@ const UserName = styled.span`
 	margin-left: 10px;
 	font-size: 16px;
 	color: ${({ theme }) => theme.text};
+
+	@media (max-width: 480px) {
+		font-size: 14px;
+	}
 `
 
 const AvatarRoot = styled(Avatar.Root)`
@@ -128,6 +209,11 @@ const AvatarRoot = styled(Avatar.Root)`
 		transform: scale(1.05);
 		border-color: 1px solid ${({ theme }) => theme.logoHeaderHover};
 	}
+
+	@media (max-width: 480px) {
+		width: 32px;
+		height: 32px;
+	}
 `
 
 const AvatarImage = styled(Avatar.Image)`
@@ -147,12 +233,18 @@ const AvatarFallback = styled(Avatar.Fallback)`
 	color: ${({ theme }) => theme.avatarTextFallback};
 	font-size: 20px;
 	font-weight: bold;
+
+	@media (max-width: 480px) {
+		font-size: 16px;
+	}
 `
 
 export {
 	HeaderContainer,
 	LogoHeader,
 	Logo,
+	NavButton,
+	HeaderModalContainer,
 	Nav,
 	NavList,
 	NavItem,

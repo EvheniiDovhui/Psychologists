@@ -1,8 +1,15 @@
 import React from 'react'
-import { Logo, HeaderContainer, Span } from './HeaderStyles'
+import {
+	Logo,
+	HeaderContainer,
+	Span,
+	HeaderModalContainer,
+	NavButton,
+} from './HeaderStyles'
 import Navigation from './Navigation'
 import UserSection from './UserSection'
 import AuthButtons from './AuthButtons'
+import { IconMenu } from '../../assets/Icon'
 
 const Header = ({
 	theme,
@@ -17,16 +24,20 @@ const Header = ({
 				psychologists.
 				<Span>services</Span>
 			</Logo>
-			<Navigation user={user} />
-
-			{user ? (
-				<UserSection user={user} theme={theme} setTheme={setTheme} />
-			) : (
-				<AuthButtons
-					openLoginModal={openLoginModal}
-					openRegistrationModal={openRegistrationModal}
-				/>
-			)}
+			<NavButton onClick={openLoginModal}>
+				<IconMenu className='icon-menu' />
+			</NavButton>
+			<HeaderModalContainer>
+				<Navigation user={user} />
+				{user ? (
+					<UserSection user={user} theme={theme} setTheme={setTheme} />
+				) : (
+					<AuthButtons
+						openLoginModal={openLoginModal}
+						openRegistrationModal={openRegistrationModal}
+					/>
+				)}
+			</HeaderModalContainer>
 		</HeaderContainer>
 	)
 }

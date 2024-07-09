@@ -1,4 +1,3 @@
-// MainContentHome.jsx
 import React, { useState } from 'react'
 import {
 	MainContainer,
@@ -10,10 +9,24 @@ import {
 	MainImage,
 	MainTitleSpan,
 	MainTextContainer,
+	ImageAndElementsContainer,
+	NewElement1,
+	NewElement2,
+	NewElement3,
+	NewElementText,
+	NewElementTitle,
+	NewElementSubtitle,
+	NewElementIcon,
+	NewElementIcon1,
 } from './MainContentHomeStyles'
 import image1x from '../../assets/img/image.jpg'
 import image2x from '../../assets/img/image@2x.jpg'
-import { IconArrow } from '../../assets/Icon'
+import {
+	IconArrow,
+	IconCheck,
+	IconQuestion,
+	IconUsers,
+} from '../../assets/Icon'
 import './MainContentHome.css'
 import { useAuth } from '../../context/AuthContext/AuthContext'
 import LoginForm from '../ui/ModalForm/LoginForm'
@@ -75,13 +88,39 @@ const MainContentHome = () => {
 					</MainLink>
 				</MainText>
 			</MainTextContainer>
-			<MainImageContainer>
-				<MainImage
-					src={image1x}
-					srcSet={`${image1x} 1x, ${image2x} 2x`}
-					alt='Psychologist'
-				/>
-			</MainImageContainer>
+
+			<ImageAndElementsContainer>
+				<MainImageContainer>
+					<MainImage
+						src={image1x}
+						srcSet={`${image1x} 1x, ${image2x} 2x`}
+						alt='Psychologist'
+					/>
+				</MainImageContainer>
+
+				<NewElement1>
+					<NewElementIcon1>
+						<IconCheck className='icon-check' />
+					</NewElementIcon1>
+					<NewElementText>
+						<NewElementTitle>Experienced psychologists</NewElementTitle>
+						<NewElementSubtitle>15,000</NewElementSubtitle>
+					</NewElementText>
+				</NewElement1>
+
+				<NewElement2>
+					<NewElementIcon>
+						<IconQuestion className='icon-question' />
+					</NewElementIcon>
+				</NewElement2>
+
+				<NewElement3>
+					<NewElementIcon>
+						<IconUsers className='icon-users' />
+					</NewElementIcon>
+				</NewElement3>
+			</ImageAndElementsContainer>
+
 			<Modal isOpen={showLoginModal} onClose={() => setShowLoginModal(false)}>
 				<LoginForm />
 			</Modal>

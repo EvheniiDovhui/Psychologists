@@ -4,3 +4,24 @@
 	fill: currentColor;
 	stroke: currentColor;
 }
+
+.icon-check {
+	width: 24px;
+	height: 24px;
+	fill: currentColor;
+	stroke: currentColor;
+}
+
+.icon-question {
+	width: 24px;
+	height: 24px;
+	fill: currentColor;
+	stroke: currentColor;
+}
+
+.icon-users {
+	width: 34px;
+	height: 34px;
+	fill: currentColor;
+	stroke: currentColor;
+}

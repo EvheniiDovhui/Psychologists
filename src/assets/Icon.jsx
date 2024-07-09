@@ -1,5 +1,17 @@
 import icon from './img/sprite.svg'
 
+export const IconMenu = ({ className }) => (
+	<svg className={`${className}`}>
+		<use href={`${icon}#iconMenu`}></use>
+	</svg>
+)
+
+export const IconQuestion = ({ className }) => (
+	<svg className={`${className}`}>
+		<use href={`${icon}#iconQuestion`}></use>
+	</svg>
+)
+
 export const IconUser = ({ className }) => (
 	<svg className={`${className}`}>
 		<use href={`${icon}#iconUser`}></use>

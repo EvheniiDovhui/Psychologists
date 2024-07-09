@@ -4,3 +4,9 @@
 	fill: var(--color-white);
 	stroke: var(--color-white);
 }
+.icon-menu {
+	width: 16px;
+	height: 16px;
+	fill: rebeccapurple;
+	/* stroke: rebeccapurple; */
+}
