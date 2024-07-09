@@ -9,7 +9,7 @@ import MainContentHome from '../../components/MainContentHome/MainContentHome'
 import { useTheme } from '../../context/ThemeContext/ThemeContext'
 import { auth } from '../../services/firebaseConfig'
 import { onAuthStateChanged } from 'firebase/auth'
-import { getUserTheme, setUserTheme } from '../../services/themeService' // Імпорт функцій для отримання та збереження теми користувача
+import { getUserTheme, setUserTheme } from '../../services/themeService'
 
 const HomePage = () => {
 	const { theme, setTheme } = useTheme()
@@ -27,28 +27,25 @@ const HomePage = () => {
 		const unsubscribe = onAuthStateChanged(auth, async user => {
 			if (user) {
 				setUser(user)
-				const savedTheme = await getUserTheme(user.uid) // Отримати тему користувача
+				const savedTheme = await getUserTheme(user.uid)
 				if (savedTheme) {
-					setTheme(savedTheme) // Встановити тему користувача
+					setTheme(savedTheme)
 				}
 			} else {
 				setUser(null)
-				setTheme('light') // Встановити тему за замовчуванням
+				setTheme('light')
 			}
 		})
 		return unsubscribe
 	}, [setTheme])
 
 	const handleThemeChange = async newTheme => {
-		setTheme(newTheme) // Встановити нову тему
-
+		setTheme(newTheme)
 		if (user) {
-			// Якщо користувач автентифікований, зберегти нову тему в базі даних
 			try {
 				await setUserTheme(user.uid, newTheme)
 			} catch (error) {
 				console.error('Error setting user theme:', error)
-				// Обробка помилки збереження теми користувача
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
 	MainContainer,
 	MainText,
@@ -35,13 +35,15 @@ import Modal from '../ui/Modal/Modal'
 import { useNavigate } from 'react-router-dom'
 
 const MainContentHome = () => {
-	const { user } = useAuth()
+	const { currentUser } = useAuth()
 	const [showLoginModal, setShowLoginModal] = useState(false)
 	const [showRegistrationModal, setShowRegistrationModal] = useState(false)
 	const navigate = useNavigate()
 
+	useEffect(() => {}, [currentUser])
+
 	const handleGetStarted = () => {
-		if (user) {
+		if (currentUser) {
 			navigate('/psychologists')
 		} else {
 			const firstTimeLogin = localStorage.getItem('firstTimeLogin')
