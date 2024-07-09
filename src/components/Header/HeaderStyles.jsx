@@ -69,22 +69,23 @@ const NavButton = styled.button`
 	}
 `
 const HeaderModalContainer = styled.div`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	gap: 116px;
-
-	@media (max-width: 768px) {
-		flex-direction: column;
-		gap: 8px;
-	}
-
+	display: none;
 	@media (max-width: 480px) {
-		gap: 0;
-
-		visibility: hidden;
-		width: 0;
-		height: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		gap: 16px;
+		background: ${({ theme }) => theme.background};
+		${
+			'' /* position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%; */
+		}
+		z-index: 1000;
+		padding: 20px;
 	}
 `
 
