@@ -5,6 +5,7 @@ export const PsCardHeader = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-start;
+	margin-bottom: 24px;
 `
 
 export const PsSpecialtyNameContainer = styled.div`
@@ -66,6 +67,10 @@ export const PsFavBtn = styled.button`
 	background: none;
 	border: none;
 	cursor: pointer;
+
+	&:focus {
+		outline: 1px solid ${({ theme }) => theme.borderColor};
+	}
 `
 
 export const IconNoFavoritesStyled = styled(IconNoFavorites)`
@@ -76,7 +81,8 @@ export const IconNoFavoritesStyled = styled(IconNoFavorites)`
 
 	transition: fill 0.3s ease-in-out, stroke 0.3s ease-in-out;
 
-	&:hover {
+	&:hover,
+	&:focus {
 		fill: ${({ theme }) => theme.logoHeaderHover};
 		stroke: ${({ theme }) => theme.logoHeaderHover};
 	}
@@ -90,7 +96,8 @@ export const IconFavoritesStyled = styled(IconNoFavorites)`
 
 	transition: fill 0.3s ease-in-out, stroke 0.3s ease-in-out;
 
-	&:hover {
+	&:hover,
+	&:focus {
 		fill: ${({ theme }) => theme.logoHeaderHover};
 		stroke: ${({ theme }) => theme.logoHeaderHover};
 	}

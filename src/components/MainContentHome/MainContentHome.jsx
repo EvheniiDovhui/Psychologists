@@ -33,6 +33,7 @@ import LoginForm from '../ui/ModalForm/LoginForm'
 import RegistrationForm from '../ui/ModalForm/RegistrationForm'
 import Modal from '../ui/Modal/Modal'
 import { useNavigate } from 'react-router-dom'
+import { Loader } from '../Loader/Loader'
 
 const MainContentHome = () => {
 	const { currentUser } = useAuth()
@@ -64,6 +65,7 @@ const MainContentHome = () => {
 
 	return (
 		<MainContainer>
+			{/* <Loader /> */}
 			<MainTextContainer>
 				<MainText>
 					<MainTitle>

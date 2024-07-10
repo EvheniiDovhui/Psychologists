@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getPsychologists } from '../../../services/psychologistService'
 import PsychologistCard from '../PsychologistCard/PsychologistCard'
 import { Container } from './PsychologistListStyles'
+import { Loader } from '../../Loader/Loader'
 
 const PsychologistList = () => {
 	const [psychologists, setPsychologists] = useState([])
@@ -22,7 +23,7 @@ const PsychologistList = () => {
 					<PsychologistCard key={index} psychologist={psychologist} />
 				))
 			) : (
-				<p>No psychologists found</p>
+				<Loader />
 			)}
 		</Container>
 	)

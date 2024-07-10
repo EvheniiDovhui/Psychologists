@@ -6,8 +6,10 @@ import {
 	Avatar,
 	AvatarContainer,
 	OnlineStatus,
+	PsychologistInfo,
 	PsychologistItem,
 } from './PsychologistCardStyles'
+import PsychologistCardMain from '../PsychologistCardMain/PsychologistCardMain'
 
 const PsychologistCard = ({ psychologist }) => {
 	return (
@@ -20,26 +22,10 @@ const PsychologistCard = ({ psychologist }) => {
 				/>
 				<OnlineStatus />
 			</AvatarContainer>
-			<div>
+			<PsychologistInfo>
 				<PsychologistCardHeader psychologist={psychologist} />
-				<div className='psychologist-card-body'>
-					<p>
-						<strong>Experience:</strong> {psychologist.experience}
-					</p>
-					<p>
-						<strong>License:</strong> {psychologist.license}
-					</p>
-					<p>
-						<strong>Specialization:</strong> {psychologist.specialization}
-					</p>
-					<p>
-						<strong>Initial consultation:</strong>{' '}
-						{psychologist.initial_consultation}
-					</p>
-
-					<p>{psychologist.about}</p>
-				</div>
-			</div>
+				<PsychologistCardMain psychologist={psychologist} />
+			</PsychologistInfo>
 		</PsychologistItem>
 	)
 }

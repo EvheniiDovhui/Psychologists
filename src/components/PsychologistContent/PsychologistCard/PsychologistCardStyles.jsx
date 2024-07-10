@@ -39,3 +39,5 @@ export const OnlineStatus = styled.div`
 	border: 3px solid ${({ theme }) => theme.background};
 	border-radius: 50%;
 `
+
+export const PsychologistInfo = styled.div``
