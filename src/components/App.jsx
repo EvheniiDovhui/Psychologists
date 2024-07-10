@@ -1,6 +1,5 @@
-import '../styles/App.css'
 import React from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { HashRouter as Router } from 'react-router-dom'
 import { GlobalStyles } from '../themes/globalStyles'
 import AppRoutes from '../routes/AppRoutes'
 import { AuthProvider } from '../context/AuthContext/AuthContext'
