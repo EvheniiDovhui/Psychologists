@@ -1,16 +1,32 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { Link } from 'react-router-dom'
 import * as Avatar from '@radix-ui/react-avatar'
 
+const waveAnimation = keyframes`
+	0% {
+		left: -100%;
+	}
+	50% {
+		left: 100%;
+	}
+	100% {
+		left: 100%;
+	}
+`
+
 const HeaderContainer = styled.header`
 	display: flex;
-	max-width: 1200px;
+	max-width: 100%;
 	margin: 0 auto;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	align-items: center;
 	padding: 18px;
-	background: ${({ theme }) => theme.background};
+	${'' /* background: ${({ theme }) => theme.body}; */}
 	border-bottom: 1px solid ${({ theme }) => theme.borderHeader};
+
+	@media (max-width: 1200px) {
+		justify-content: space-between;
+	}
 
 	@media (max-width: 768px) {
 		padding: 10px;
@@ -38,11 +54,29 @@ const Logo = styled.a`
 	font-size: 24px;
 	font-weight: bold;
 	color: ${({ theme }) => theme.logoHeader};
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	transition: color 0.3s, transform 0.3s;
+
 	&:hover {
-		text-decoration: none;
-		transition: transform 0.3s, color 0.3s;
-		transform: scale(1.015);
 		color: ${({ theme }) => theme.logoHeaderHover};
+		transform: scale(1.05);
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 3px;
+		background: ${({ theme }) => theme.logoHeaderHover};
+		bottom: 0;
+		left: -100%;
+		animation: ${waveAnimation} 3s infinite;
+	}
+
+	@media (max-width: 768px) {
+		font-size: 20px;
 	}
 
 	@media (max-width: 480px) {
@@ -54,7 +88,6 @@ const Span = styled.span`
 	font-weight: bold;
 	color: ${({ theme }) => theme.logoHeaderSpan};
 `
-
 const NavButton = styled.button`
 	display: none;
 	cursor: pointer;
@@ -93,7 +126,6 @@ const Nav = styled.nav`
 	display: flex;
 
 	@media (max-width: 768px) {
-		width: 100%;
 		margin-top: 10px;
 		justify-content: space-between;
 	}

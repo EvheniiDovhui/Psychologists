@@ -1,13 +1,34 @@
-import { getDatabase, ref, get } from 'firebase/database'
+import {
+	getDatabase,
+	ref,
+	get,
+	query,
+	limitToFirst,
+	orderByKey,
+	startAfter,
+} from 'firebase/database'
 
-export const getPsychologists = async () => {
+export const getPsychologists = async (lastKey = null) => {
 	const db = getDatabase()
-	const dbRef = ref(db, '/')
+	let dbRef = ref(db, '/')
+	if (lastKey) {
+		dbRef = query(
+			dbRef,
+			orderByKey(),
+			startAfter(String(lastKey)),
+			limitToFirst(4)
+		)
+	} else {
+		dbRef = query(dbRef, orderByKey(), limitToFirst(4))
+	}
+
 	try {
 		const snapshot = await get(dbRef)
 		if (snapshot.exists()) {
 			const data = snapshot.val()
-			return Object.values(data)
+			return data
+				? Object.entries(data).map(([key, value]) => ({ key, ...value }))
+				: []
 		} else {
 			console.log('No data available')
 			return []

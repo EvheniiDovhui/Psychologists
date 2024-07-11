@@ -44,12 +44,15 @@ const MainContentHome = () => {
 	useEffect(() => {}, [currentUser])
 
 	const handleGetStarted = () => {
+		console.log('Get started button clicked')
 		if (currentUser) {
+			console.log('User is authenticated')
 			navigate('/psychologists')
 		} else {
 			const firstTimeLogin = localStorage.getItem('firstTimeLogin')
 			const isRegistered = localStorage.getItem('isRegistered')
 			if (firstTimeLogin === null || isRegistered === 'false') {
+				console.log('Showing registration modal')
 				setShowRegistrationModal(true)
 				localStorage.setItem('firstTimeLogin', 'false')
 			} else {

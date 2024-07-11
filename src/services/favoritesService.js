@@ -13,12 +13,10 @@ export const addFavorite = async (userId, psychologistName) => {
 		await updateDoc(userDocRef, {
 			favorites: arrayUnion(psychologistName),
 		})
+		console.log('Successfully added favorite:', psychologistName)
 	} catch (error) {
-		console.error('Error adding favorite:', error)
 		throw error
 	}
-	console.log('Початок функції addFavorite')
-	console.log('Кінець функції addFavorite')
 }
 
 export const removeFavorite = async (userId, psychologistName) => {
@@ -28,7 +26,6 @@ export const removeFavorite = async (userId, psychologistName) => {
 			favorites: arrayRemove(psychologistName),
 		})
 	} catch (error) {
-		console.error('Error removing favorite:', error)
 		throw error
 	}
 }
@@ -40,11 +37,16 @@ export const getFavorites = async userId => {
 		if (userDoc.exists()) {
 			return userDoc.data().favorites || []
 		} else {
-			console.error('No such user document')
 			return []
 		}
 	} catch (error) {
-		console.error('Error getting favorites:', error)
+		try {
+			const userDocFromCache = await getDoc(userDocRef, { source: 'cache' })
+			if (userDocFromCache.exists()) {
+				return userDocFromCache.data().favorites || []
+			}
+		} catch (cacheError) {}
+
 		throw error
 	}
 }

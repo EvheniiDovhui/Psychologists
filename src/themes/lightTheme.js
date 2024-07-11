@@ -1,5 +1,5 @@
 const lightTheme = {
-	body: 'var(--color-white)',
+	body: 'var(--color-gray)',
 	text: 'var(--color-text)',
 	background: 'var(--color-white)',
 	psPageBackground: 'var(--color-psychologist-page-background)',

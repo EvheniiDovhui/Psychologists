@@ -1,4 +1,13 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const rotateAnimation = keyframes`
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+`
 
 export const MainContainer = styled.section`
 	display: flex;
@@ -6,11 +15,11 @@ export const MainContainer = styled.section`
 	margin: 0 auto;
 	justify-content: space-between;
 	align-items: center;
-	padding: 20px;
+	padding: 60px;
 
 	@media (max-width: 1200px) {
 		${'' /* flex-direction: column-reverse; */}
-		padding: 10px;
+		padding: 40px;
 	}
 
 	@media (max-width: 767.98px) {
@@ -41,11 +50,12 @@ export const MainText = styled.div`
 	width: 595px;
 
 	@media (max-width: 1200px) {
-		width: 100%;
+		${'' /* width: 100%; */}
+		width: 500px;
 	}
 
 	@media (max-width: 768px) {
-		width: 100%;
+		width: 320px;
 	}
 `
 
@@ -142,6 +152,11 @@ export const NewElementContainer = styled.div`
 	border-radius: 10px;
 	padding: 10px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s, box-shadow 0.3s;
+
+	&:hover {
+		box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+	}
 
 	@media (max-width: 1200px) {
 		padding: 8px;
@@ -167,7 +182,7 @@ export const NewElementTitle = styled.div`
 	}
 
 	@media (max-width: 768px) {
-		font-size: 0.8rem;
+		font-size: 0.6rem;
 	}
 `
 
@@ -190,6 +205,12 @@ export const NewElementIcon = styled.div`
 	justify-content: center;
 	align-items: center;
 	color: #fff;
+	transition: transform 0.3s, color 0.3s;
+
+	&:hover {
+		transform: rotate(20deg);
+		color: ${({ theme }) => theme.iconHoverColor};
+	}
 
 	@media (max-width: 1200px) {
 		font-size: 1.5rem;
@@ -212,6 +233,12 @@ export const NewElementIcon1 = styled.div`
 	align-items: center;
 	background-color: #fff;
 	color: ${({ theme }) => theme.buttonBackground};
+	transition: transform 0.3s, background-color 0.3s;
+
+	&:hover {
+		transform: scale(1.1);
+		background-color: ${({ theme }) => theme.iconHoverBackground};
+	}
 
 	@media (max-width: 1200px) {
 		font-size: 1.5rem;
@@ -235,6 +262,11 @@ export const NewElement1 = styled(NewElementContainer)`
 	top: 80%;
 	background-color: ${({ theme }) => theme.buttonBackground};
 	transform: translate(-50%, -50%);
+	transition: background-color 0.3s;
+
+	&:hover {
+		background-color: ${({ theme }) => theme.buttonHoverBackground};
+	}
 
 	@media (max-width: 1200px) {
 		padding: 16px;
@@ -256,6 +288,12 @@ export const NewElement2 = styled(NewElementContainer)`
 	top: 35%;
 	left: -10%;
 	transform: rotate(-10deg);
+	transition: background-color 0.3s, transform 0.3s;
+
+	&:hover {
+		background-color: #3629a0;
+		transform: rotate(0deg);
+	}
 
 	@media (max-width: 1200px) {
 		width: 30px;
@@ -277,6 +315,12 @@ export const NewElement3 = styled(NewElementContainer)`
 	top: 10%;
 	right: -10%;
 	transform: rotate(10deg);
+	transition: background-color 0.3s, transform 0.3s;
+
+	&:hover {
+		background-color: #e3b556;
+		transform: rotate(0deg);
+	}
 
 	@media (max-width: 1200px) {
 		width: 36px;

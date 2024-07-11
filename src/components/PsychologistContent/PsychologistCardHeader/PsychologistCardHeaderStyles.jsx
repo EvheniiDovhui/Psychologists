@@ -6,6 +6,15 @@ export const PsCardHeader = styled.div`
 	justify-content: space-between;
 	align-items: flex-start;
 	margin-bottom: 24px;
+
+	@media (max-width: 768px) {
+		${'' /* flex-direction: column; */}
+		justify-content: space-between;
+	}
+	@media (max-width: 480px) {
+		flex-direction: column;
+		justify-content: space-between;
+	}
 `
 
 export const PsSpecialtyNameContainer = styled.div`
@@ -32,7 +41,21 @@ export const PsRatingPriceContainer = styled.div`
 	display: flex;
 	gap: 0.5rem;
 	align-items: center;
+
+	@media (max-width: 768px) {
+	}
+
+	@media (max-width: 425px) {
+		flex-direction: column;
+	}
 `
+
+export const PsDecoratingContainer = styled.div`
+	@media (max-width: 425px) {
+		display: none;
+	}
+`
+
 export const PsIconStarFull = styled(IconStarFull)`
 	width: 16px;
 	height: 16px;

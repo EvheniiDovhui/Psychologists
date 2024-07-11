@@ -3,6 +3,7 @@ import {
 	IconFavoritesStyled,
 	IconNoFavoritesStyled,
 	PsCardHeader,
+	PsDecoratingContainer,
 	PsFavBtn,
 	PsIconStarFull,
 	PsName,
@@ -75,7 +76,7 @@ const PsychologistCardHeader = ({ psychologist }) => {
 				<PsRating>
 					<PsIconStarFull /> Rating: {psychologist.rating}
 				</PsRating>
-				|
+				<PsDecoratingContainer> | </PsDecoratingContainer>
 				<PsPrice>
 					Price / 1 hour:
 					<PsRatingSpan> {psychologist.price_per_hour}$</PsRatingSpan>

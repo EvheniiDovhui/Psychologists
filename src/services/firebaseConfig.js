@@ -2,15 +2,7 @@ import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
 import { getDatabase } from 'firebase/database'
 import { getAnalytics } from 'firebase/analytics'
-import {
-	getFirestore,
-	doc,
-	setDoc,
-	getDoc,
-	updateDoc,
-	arrayUnion,
-	arrayRemove,
-} from 'firebase/firestore'
+import { getFirestore } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
 
 const firebaseConfig = {
@@ -30,5 +22,11 @@ const auth = getAuth(app)
 const database = getDatabase(app)
 const analytics = getAnalytics(app)
 const storage = getStorage(app)
-export const db = getFirestore(app)
-export { app, auth, database, analytics, storage }
+const db = getFirestore(app, {
+	cacheSizeBytes: 1048576,
+	experimentalForceLongPolling: true,
+	ignoreUndefinedProperties: true,
+	useFetchStreams: false,
+})
+
+export { app, auth, database, analytics, storage, db }
