@@ -19,12 +19,23 @@ import {
 	PsCommentUserInfo,
 } from './PsychologistCardMainStyles'
 import { PsIconStarFull } from '../PsychologistCardHeader/PsychologistCardHeaderStyles'
+import Modal from '../../ui/Modal/Modal'
+import AppointmentForm from '../../ui/AppointmentForm/AppointmentForm'
 
 export const PsychologistCardMain = ({ psychologist }) => {
 	const [showComments, setShowComments] = useState(false)
+	const [isModalOpen, setIsModalOpen] = useState(false)
 
 	const handleReadMoreClick = () => {
 		setShowComments(!showComments)
+	}
+
+	const handleModalOpen = () => {
+		setIsModalOpen(true)
+	}
+
+	const handleModalClose = () => {
+		setIsModalOpen(false)
 	}
 
 	return (
@@ -53,7 +64,9 @@ export const PsychologistCardMain = ({ psychologist }) => {
 					{showComments ? 'Hide comments' : 'Read more'}
 				</PsButton>
 
-				<PsAppointmentButton>Make an appointment</PsAppointmentButton>
+				<PsAppointmentButton onClick={handleModalOpen}>
+					Make an appointment
+				</PsAppointmentButton>
 			</PsButtonContainer>
 			{showComments && (
 				<PsCommentList>
@@ -73,6 +86,12 @@ export const PsychologistCardMain = ({ psychologist }) => {
 					))}
 				</PsCommentList>
 			)}
+			<Modal isOpen={isModalOpen} onClose={handleModalClose}>
+				<AppointmentForm
+					psychologist={psychologist}
+					onClose={handleModalClose}
+				/>
+			</Modal>
 		</PsMain>
 	)
 }

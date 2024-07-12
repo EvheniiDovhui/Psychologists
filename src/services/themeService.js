@@ -1,6 +1,6 @@
 // themeService.js
 import { doc, getDoc, setDoc } from 'firebase/firestore'
-import { db } from '../services/firebaseConfig'
+import { db, database, storage } from '../services/firebaseConfig'
 
 const MAX_RETRIES = 3
 
@@ -8,6 +8,7 @@ export const getUserTheme = async userId => {
 	for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
 		try {
 			const userDocRef = doc(db, 'users', userId)
+			// const userDocRef = storage.colections.users.doc(userId)
 			const userSnap = await getDoc(userDocRef)
 
 			if (userSnap.exists()) {

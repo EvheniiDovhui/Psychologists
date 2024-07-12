@@ -9,7 +9,7 @@ const Modal = ({ isOpen, onClose, children }) => {
 		<ModalOverlay onClick={onClose}>
 			<ModalContent onClick={e => e.stopPropagation()}>
 				<CloseButton onClick={onClose}>&times;</CloseButton>
-				{React.cloneElement(children, { onClose })}
+				{children}
 			</ModalContent>
 		</ModalOverlay>,
 		document.getElementById('modals-root')

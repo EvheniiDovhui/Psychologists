@@ -24,19 +24,24 @@ const HomePage = () => {
 	const closeRegistrationModal = () => setRegistrationModalOpen(false)
 
 	useEffect(() => {
-		const unsubscribe = onAuthStateChanged(auth, async user => {
-			if (user) {
-				setUser(user)
-				const savedTheme = await getUserTheme(user.uid)
-				if (savedTheme) {
-					setTheme(savedTheme)
+		try {
+			onAuthStateChanged(auth, async user => {
+				console.log('user', user)
+				console.log(auth)
+				if (user) {
+					setUser(user)
+					const savedTheme = await getUserTheme(user.uid)
+					if (savedTheme) {
+						setTheme(savedTheme)
+					}
+				} else {
+					setUser(null)
+					setTheme('light')
 				}
-			} else {
-				setUser(null)
-				setTheme('light')
-			}
-		})
-		return unsubscribe
+			})
+		} catch (error) {
+			console.error('Error checking user authentication:', error)
+		}
 	}, [setTheme])
 
 	const handleThemeChange = async newTheme => {

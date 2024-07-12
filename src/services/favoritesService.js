@@ -40,6 +40,7 @@ export const getFavorites = async userId => {
 			return []
 		}
 	} catch (error) {
+		console.log(error)
 		try {
 			const userDocFromCache = await getDoc(userDocRef, { source: 'cache' })
 			if (userDocFromCache.exists()) {
