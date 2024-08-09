@@ -1,5 +1,5 @@
+import { database } from './firebaseConfig'
 import {
-	getDatabase,
 	ref,
 	get,
 	query,
@@ -9,8 +9,7 @@ import {
 } from 'firebase/database'
 
 export const getPsychologists = async (lastKey = null) => {
-	const db = getDatabase()
-	let dbRef = ref(db, '/')
+	let dbRef = ref(database, '/')
 	if (lastKey) {
 		dbRef = query(
 			dbRef,

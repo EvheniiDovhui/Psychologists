@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { getFavorites } from '../../services/favoritesService'
 import PsychologistCard from '../../components/PsychologistContent/PsychologistCard/PsychologistCard'
 import { Container } from './FavoritesPageStyles'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { getPsychologists } from '../../services/psychologistService'
+import { getFavoritePsychologists } from '../../services/favoritesService'
 import Header from '../../components/Header/Header'
 import { Modal } from '../../components/ui/Modal'
 import useModal from '../../hooks/useModal'
@@ -13,9 +13,9 @@ import { useTheme } from '../../context/ThemeContext/ThemeContext'
 
 const FavoritesPage = () => {
 	const { theme, setTheme } = useTheme()
-	const [favorites, setFavorites] = useState([])
 	const [userId, setUserId] = useState(null)
 	const [allPsychologists, setAllPsychologists] = useState([])
+	const [favorites, setFavorites] = useState([])
 	const { open, onOpen, onClose } = useModal()
 	const [isLoginModalOpen, setLoginModalOpen] = useState(false)
 	const [isRegistrationModalOpen, setRegistrationModalOpen] = useState(false)
@@ -41,19 +41,18 @@ const FavoritesPage = () => {
 		const unsubscribe = onAuthStateChanged(auth, async user => {
 			if (user) {
 				setUserId(user.uid)
-				setUser(user)
-				const favorites = await getFavorites(user.uid)
+				const favorites = await getFavoritePsychologists(user.uid)
 				setFavorites(favorites)
 			} else {
 				setUserId(null)
-				setUser(null)
+				setFavorites([])
 			}
 		})
 		return () => unsubscribe()
 	}, [])
 
 	const favoritePsychologists = allPsychologists.filter(psychologist =>
-		favorites.includes(psychologist.name)
+		favorites.includes(psychologist.key)
 	)
 
 	return (

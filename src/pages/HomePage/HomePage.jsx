@@ -9,7 +9,7 @@ import MainContentHome from '../../components/MainContentHome/MainContentHome'
 import { useTheme } from '../../context/ThemeContext/ThemeContext'
 import { auth } from '../../services/firebaseConfig'
 import { onAuthStateChanged } from 'firebase/auth'
-import { getUserTheme, setUserTheme } from '../../services/themeService'
+// import { getUserTheme, setUserTheme } from '../../services/themeService'
 
 const HomePage = () => {
 	const { theme, setTheme } = useTheme()
@@ -26,14 +26,8 @@ const HomePage = () => {
 	useEffect(() => {
 		try {
 			onAuthStateChanged(auth, async user => {
-				console.log('user', user)
-				console.log(auth)
 				if (user) {
 					setUser(user)
-					const savedTheme = await getUserTheme(user.uid)
-					if (savedTheme) {
-						setTheme(savedTheme)
-					}
 				} else {
 					setUser(null)
 					setTheme('light')
@@ -48,7 +42,6 @@ const HomePage = () => {
 		setTheme(newTheme)
 		if (user) {
 			try {
-				await setUserTheme(user.uid, newTheme)
 			} catch (error) {
 				console.error('Error setting user theme:', error)
 			}

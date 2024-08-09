@@ -1,53 +1,38 @@
-import { db } from './firebaseConfig'
 import {
+	getFirestore,
 	doc,
+	getDoc,
 	updateDoc,
 	arrayUnion,
 	arrayRemove,
-	getDoc,
 } from 'firebase/firestore'
 
-export const addFavorite = async (userId, psychologistName) => {
-	const userDocRef = doc(db, 'users', userId)
-	try {
-		await updateDoc(userDocRef, {
-			favorites: arrayUnion(psychologistName),
-		})
-		console.log('Successfully added favorite:', psychologistName)
-	} catch (error) {
-		throw error
-	}
+const firestore = getFirestore()
+
+export const addFavorite = async (userId, psychologistKey) => {
+	const userDocRef = doc(firestore, 'users', userId)
+	await updateDoc(userDocRef, {
+		favorites: arrayUnion(psychologistKey),
+	})
 }
 
-export const removeFavorite = async (userId, psychologistName) => {
-	const userDocRef = doc(db, 'users', userId)
-	try {
-		await updateDoc(userDocRef, {
-			favorites: arrayRemove(psychologistName),
-		})
-	} catch (error) {
-		throw error
-	}
+export const removeFavorite = async (userId, psychologistKey) => {
+	const userDocRef = doc(firestore, 'users', userId)
+	await updateDoc(userDocRef, {
+		favorites: arrayRemove(psychologistKey),
+	})
 }
 
-export const getFavorites = async userId => {
-	const userDocRef = doc(db, 'users', userId)
-	try {
-		const userDoc = await getDoc(userDocRef)
-		if (userDoc.exists()) {
-			return userDoc.data().favorites || []
-		} else {
-			return []
-		}
-	} catch (error) {
-		console.log(error)
-		try {
-			const userDocFromCache = await getDoc(userDocRef, { source: 'cache' })
-			if (userDocFromCache.exists()) {
-				return userDocFromCache.data().favorites || []
-			}
-		} catch (cacheError) {}
+export const isFavoritePsychologist = async (userId, psychologistKey) => {
+	const userDocRef = doc(firestore, 'users', userId)
+	const userDoc = await getDoc(userDocRef)
+	const userData = userDoc.data()
+	return userData.favorites.includes(psychologistKey)
+}
 
-		throw error
-	}
+export const getFavoritePsychologists = async userId => {
+	const userDocRef = doc(firestore, 'users', userId)
+	const userDoc = await getDoc(userDocRef)
+	const userData = userDoc.data()
+	return userData.favorites || []
 }

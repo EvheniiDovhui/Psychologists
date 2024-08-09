@@ -19,9 +19,7 @@ import {
 	TimeOption,
 	TimeButton,
 	IconClockButton,
-	PopupTitle,
 } from './AppointmentFormStyles'
-// import { IconClock } from '../../../assets/Icon'
 
 const AppointmentForm = ({ onClose, psychologist }) => {
 	const [showPopup, setShowPopup] = useState(false)
@@ -62,7 +60,7 @@ const AppointmentForm = ({ onClose, psychologist }) => {
 	const handleSubmit = e => {
 		e.preventDefault()
 		if (error) return
-		onClose()
+		onClose() // Ensure onClose is called here
 	}
 
 	useEffect(() => {
@@ -121,14 +119,17 @@ const AppointmentForm = ({ onClose, psychologist }) => {
 							value={selectedTime}
 							onChange={handleInputChange}
 							placeholder='HH:MM'
-							required
 						/>
-						<TimeButton type='button' onClick={() => setShowPopup(!showPopup)}>
+						<TimeButton
+							type='button'
+							onClick={() => setShowPopup(!showPopup)}
+							style={{ cursor: 'pointer' }}
+						>
 							<IconClockButton />
 						</TimeButton>
 						{error && <p style={{ color: 'red' }}>{error}</p>}
 						<Popup ref={popupRef} show={showPopup}>
-							<PopupTitle>Meeting time</PopupTitle>
+							<p>Meeting time</p>
 							{[
 								'09:00',
 								'10:00',

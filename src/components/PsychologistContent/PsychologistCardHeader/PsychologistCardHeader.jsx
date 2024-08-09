@@ -14,26 +14,30 @@ import {
 	PsSpecialty,
 	PsSpecialtyNameContainer,
 } from './PsychologistCardHeaderStyles'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import {
 	addFavorite,
 	removeFavorite,
-	getFavorites,
+	isFavoritePsychologist,
 } from '../../../services/favoritesService'
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 const PsychologistCardHeader = ({ psychologist }) => {
-	const [isFavorite, setIsFavorite] = useState(false)
 	const [userId, setUserId] = useState(null)
+	const [isFavorite, setIsFavorite] = useState(false)
 
 	useEffect(() => {
 		const auth = getAuth()
 		const unsubscribe = onAuthStateChanged(auth, async user => {
 			if (user) {
 				setUserId(user.uid)
-				const favorites = await getFavorites(user.uid)
-				setIsFavorite(favorites.includes(psychologist.name))
+				const favoriteStatus = await isFavoritePsychologist(
+					user.uid,
+					psychologist.name
+				)
+				setIsFavorite(favoriteStatus)
 			} else {
 				setUserId(null)
+				setIsFavorite(false)
 			}
 		})
 		return () => unsubscribe()
