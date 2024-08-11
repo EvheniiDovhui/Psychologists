@@ -26,6 +26,10 @@ export const AvatarContainer = styled.div`
 	margin-bottom: 10px;
 	justify-content: center;
 	align-items: center;
+
+	&:hover {
+		cursor: pointer;
+	}
 `
 export const PhotoAvatar = styled.img`
 	width: 100px;

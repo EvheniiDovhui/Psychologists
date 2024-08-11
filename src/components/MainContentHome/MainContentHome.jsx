@@ -129,7 +129,7 @@ const MainContentHome = () => {
 			</ImageAndElementsContainer>
 
 			<Modal isOpen={showLoginModal} onClose={() => setShowLoginModal(false)}>
-				<LoginForm />
+				<LoginForm  />
 			</Modal>
 			<Modal
 				isOpen={showRegistrationModal}

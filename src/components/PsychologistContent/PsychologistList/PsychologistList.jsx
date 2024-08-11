@@ -16,7 +16,6 @@ const PsychologistList = () => {
 			const data = await getPsychologists(lastKey)
 			if (data.length > 0) {
 				setLastKey(data[data.length - 1].key)
-				// Уникнення дублікатів шляхом перевірки, чи не додано вже психолога до списку
 				setPsychologists(prevPsychologists => {
 					const newPsychologists = data.filter(
 						psychologist =>
@@ -25,11 +24,10 @@ const PsychologistList = () => {
 					return [...prevPsychologists, ...newPsychologists]
 				})
 			} else {
-				setHasMore(false) // Якщо даних більше немає, встановити hasMore в false
+				setHasMore(false)
 			}
 		} catch (error) {
 			console.error('Error fetching psychologists:', error)
-			// Додайте обробку помилок
 		}
 		setIsLoading(false)
 	}

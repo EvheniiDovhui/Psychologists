@@ -25,9 +25,12 @@ export const getPsychologists = async (lastKey = null) => {
 		const snapshot = await get(dbRef)
 		if (snapshot.exists()) {
 			const data = snapshot.val()
-			return data
+			const psychologists = data
 				? Object.entries(data).map(([key, value]) => ({ key, ...value }))
 				: []
+
+			console.log('Fetched psychologists:', psychologists)
+			return psychologists
 		} else {
 			console.log('No data available')
 			return []

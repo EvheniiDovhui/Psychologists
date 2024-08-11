@@ -13,13 +13,11 @@ import { useTheme } from '../../context/ThemeContext/ThemeContext'
 
 const FavoritesPage = () => {
 	const { theme, setTheme } = useTheme()
-	const [userId, setUserId] = useState(null)
-	const [allPsychologists, setAllPsychologists] = useState([])
+	const [user, setUser] = useState(null)
+	const [allPsychologists, setAllPsychologists] = useState([]) // Всі психологи
 	const [favorites, setFavorites] = useState([])
-	const { open, onOpen, onClose } = useModal()
 	const [isLoginModalOpen, setLoginModalOpen] = useState(false)
 	const [isRegistrationModalOpen, setRegistrationModalOpen] = useState(false)
-	const [user, setUser] = useState(null)
 
 	const openLoginModal = () => setLoginModalOpen(true)
 	const closeLoginModal = () => setLoginModalOpen(false)
@@ -28,33 +26,37 @@ const FavoritesPage = () => {
 	const closeRegistrationModal = () => setRegistrationModalOpen(false)
 
 	useEffect(() => {
-		const fetchData = async () => {
+		const fetchPsychologists = async () => {
 			const data = await getPsychologists()
 			setAllPsychologists(data)
 		}
-
-		fetchData()
+		fetchPsychologists()
 	}, [])
 
 	useEffect(() => {
 		const auth = getAuth()
 		const unsubscribe = onAuthStateChanged(auth, async user => {
 			if (user) {
-				setUserId(user.uid)
-				const favorites = await getFavoritePsychologists(user.uid)
-				setFavorites(favorites)
+				setUser(user)
+				const favoriteKeys = await getFavoritePsychologists(user.uid)
+				console.log('Loaded favorites:', favoriteKeys)
+				setFavorites(favoriteKeys)
 			} else {
-				setUserId(null)
+				setUser(null)
 				setFavorites([])
 			}
 		})
-		return () => unsubscribe()
+		return unsubscribe
 	}, [])
+	console.log(allPsychologists)
 
 	const favoritePsychologists = allPsychologists.filter(psychologist =>
-		favorites.includes(psychologist.key)
+		favorites
+			.map(fav => fav.toLowerCase().trim())
+			.includes(psychologist.name.toLowerCase().trim())
 	)
 
+	console.log(favoritePsychologists.map(psychologist => psychologist.name))
 	return (
 		<>
 			<Header
@@ -74,10 +76,10 @@ const FavoritesPage = () => {
 				)}
 			</Container>
 			<Modal isOpen={isLoginModalOpen} onClose={closeLoginModal}>
-				<LoginForm closeModal={closeLoginModal} />
+				<LoginForm />
 			</Modal>
 			<Modal isOpen={isRegistrationModalOpen} onClose={closeRegistrationModal}>
-				<RegistrationForm closeModal={closeRegistrationModal} />
+				<RegistrationForm />
 			</Modal>
 		</>
 	)

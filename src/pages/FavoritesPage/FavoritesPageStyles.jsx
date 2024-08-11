@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-	width: 100%;
+	display: flex;
+	width: 80%;
+	flex-direction: column;
+	gap: 20px;
 	margin: 0 auto;
+	margin-top: 50px;
 `

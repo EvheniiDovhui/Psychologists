@@ -37,7 +37,7 @@ const schema = yup.object().shape({
 		.min(6, 'Password must be at least 6 characters'),
 })
 
-const LoginForm = ({ onClose }) => {
+const LoginForm = ({ onClose = () => {} }) => {
 	const {
 		register,
 		handleSubmit,
@@ -68,7 +68,10 @@ const LoginForm = ({ onClose }) => {
 	const onSubmit = async data => {
 		try {
 			await signInWithEmailAndPassword(auth, data.email, data.password)
+
+			// Виклик onClose, якщо це функція
 			onClose()
+
 			navigate('/psychologists')
 		} catch (error) {
 			console.error(error)
